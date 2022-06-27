@@ -1,0 +1,74 @@
+<div class="active">
+  <div class="inner">
+
+    <h1>在线激活：{{info.product}}</h1>
+
+    <div [formGroup]="basicForm" *ngIf="!active">
+      <input type="hidden" formControlName="product_id">
+      <!--  <input type="hidden" formControlName="term_id">-->
+
+      <input type="hidden" formControlName="sn">
+      <input type="hidden" formControlName="cpu">
+      <input type="hidden" formControlName="mac">
+      <input type="hidden" formControlName="uuid">
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">类型</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="">
+          <nz-radio-group formControlName="term_id">
+            <div nz-radio [nzValue]="term.id" *ngFor="let term of info.terms">
+              <p>{{term.name}}</p>
+              <p>{{term.description}}</p>
+              <p>价格：{{term.price / 100}}元</p>
+              <p>
+                期限：
+                <span *ngIf="term.year">{{term.year}}年</span>
+                <span *ngIf="term.month">{{term.month}}月</span>
+                <span *ngIf="term.day">{{term.day}}天</span>
+              </p>
+            </div>
+          </nz-radio-group>
+
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">姓名</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="">
+          <input nz-input formControlName="user" required/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">邮箱</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="">
+          <input nz-input formControlName="email" required/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">电话</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="">
+          <input nz-input formControlName="cellphone"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">组织</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="">
+          <input nz-input formControlName="organization"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button type="button" nz-button nzType="primary" (click)="submit()">提交</button>
+    </div>
+
+    <div *ngIf="active">
+      激活码：{{active.license}}
+    </div>
+
+  </div>
+
+
+
+</div>

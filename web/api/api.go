@@ -46,6 +46,9 @@ func RegisterRoutes(app *gin.RouterGroup) {
 
 	app.POST("/login", login)
 
+	app.GET("/active/:code", activeInfo)
+	app.POST("/active", curdApiCreate(reflect.TypeOf(model.License{}), licenseBeforeCreate, nil))
+
 	//检查 session，必须登录
 	app.Use(mustLogin)
 

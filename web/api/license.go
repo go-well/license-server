@@ -31,7 +31,7 @@ func licenseBeforeCreate(data interface{}) error {
 	}
 
 	var licence license.Licence
-	licence.Product = product.Name
+	licence.Product = product.Code
 	licence.User = lic.User
 
 	if product.UUID {
@@ -46,6 +46,8 @@ func licenseBeforeCreate(data interface{}) error {
 	if product.CPU {
 		licence.CPUID = lic.CPU
 	}
+
+	//TODO 重复检查
 
 	now := time.Now()
 	lic.ExpireAt = now.AddDate(term.Year, term.Month, term.Day)

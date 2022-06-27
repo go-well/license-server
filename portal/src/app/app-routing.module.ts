@@ -3,10 +3,12 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {LoginGuard} from "./login.guard";
+import {ActiveComponent} from "./active/active.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/admin'},
   {path: 'login', pathMatch: 'full', component: LoginComponent},
+  {path: 'active/:code', pathMatch: 'full', component: ActiveComponent},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [LoginGuard]},
   //{path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
 

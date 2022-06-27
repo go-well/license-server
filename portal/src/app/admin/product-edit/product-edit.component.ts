@@ -28,8 +28,8 @@ export class ProductEditComponent implements OnInit {
     this.basicForm = this.fb.group({
       code: [this.data.code, [Validators.required]],
       name: [this.data.name, [Validators.required]],
-      publicKey: [this.data.publicKey, []],
-      privateKey: [this.data.privateKey, []],
+      public_key: [this.data.public_key, []],
+      private_key: [this.data.private_key, []],
       sn: [this.data.sn, []],
       cpu: [this.data.cpu, []],
       mac: [this.data.mac, []],

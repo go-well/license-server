@@ -29,6 +29,8 @@ import {MarkdownModule} from "ngx-markdown";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {HelperModule} from "./helper/helper.module";
+import {ActiveComponent} from "./active/active.component";
+import {NzRadioModule} from "ng-zorro-antd/radio";
 //import {HelperModule} from "./helper/helper.module";
 
 registerLocaleData(zh, 'zh');
@@ -41,6 +43,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
+    ActiveComponent,
     PageNotFoundComponent,
   ],
   imports: [
@@ -66,6 +69,7 @@ export function tokenGetter() {
     NzSelectModule,
     NzTableModule,
     HelperModule,
+    NzRadioModule,
     //HelperModule,
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN}, {provide: LOCALE_ID, useValue: 'zh'}],
