@@ -1,0 +1,50 @@
+<app-editor [(ngModel)]="data" (ngModelChange)="basicForm.patchValue($event)" [submitting]="submitting"
+            (submit)="submit()">
+
+  <form [formGroup]="basicForm">
+    <input type="hidden" formControlName="product_id">
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">名称</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <input nz-input formControlName="name" required/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">说明</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <textarea nz-input formControlName="description"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">年</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-input-number formControlName="year"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">月</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-input-number formControlName="month"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">日</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-input-number formControlName="day"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">价格</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-input-number formControlName="price"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+
+</app-editor>

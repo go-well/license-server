@@ -1,0 +1,40 @@
+<nz-tabset [nzTabBarExtraContent]="extraTemplate">
+  <nz-tab nzTitle="产品详情">
+
+        <nz-list nzBordered>
+          <nz-list-item><span>ID</span>{{data.id}}</nz-list-item>
+          <nz-list-item><span>CODE</span>{{data.code}}</nz-list-item>
+          <nz-list-item><span>名称</span>{{data.name}}</nz-list-item>
+          <nz-list-item><span>公钥</span>{{data.public_key}}</nz-list-item>
+          <nz-list-item><span>私钥</span>{{data.private_key}}</nz-list-item>
+          <nz-list-item><span>SN</span>{{data.sn}}</nz-list-item>
+          <nz-list-item><span>CPU</span>{{data.cpu}}</nz-list-item>
+          <nz-list-item><span>MAC</span>{{data.mac}}</nz-list-item>
+          <nz-list-item><span>UUID</span>{{data.uuid}}</nz-list-item>
+          <nz-list-item><span>创建时间</span>{{data.created|dateString}}</nz-list-item>
+        </nz-list>
+
+
+  </nz-tab>
+  <nz-tab nzTitle="期限">
+    <ng-template nz-tab>
+      <app-term [product]="data.id"></app-term>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="授权">
+    <ng-template nz-tab>
+      <app-license [product]="data.id"></app-license>
+    </ng-template>
+  </nz-tab>
+
+</nz-tabset>
+
+<ng-template #extraTemplate>
+  <a (click)="load()" title="刷新">
+    <i nz-icon nzType="reload" [nzSpin]="loading"></i>
+  </a>
+  <nz-divider nzType="vertical"></nz-divider>
+  <a title="编辑" [routerLink]="'/admin/product/edit/'+id">
+    <i nz-icon nzType="form"></i>
+  </a>
+</ng-template>

@@ -1,0 +1,34 @@
+<nz-tabset [nzTabBarExtraContent]="extraTemplate">
+  <nz-tab nzTitle="产品详情">
+
+        <nz-list nzBordered>
+          <nz-list-item><span>ID</span>{{data.id}}</nz-list-item>
+          <nz-list-item><span>产品</span>{{data.product_id}}</nz-list-item>
+          <nz-list-item><span>名称</span>{{data.name}}</nz-list-item>
+          <nz-list-item><span>说明</span>{{data.description}}</nz-list-item>
+          <nz-list-item><span>年</span>{{data.year}}</nz-list-item>
+          <nz-list-item><span>月</span>{{data.month}}</nz-list-item>
+          <nz-list-item><span>日</span>{{data.day}}</nz-list-item>
+          <nz-list-item><span>价格</span>{{data.price / 100}}</nz-list-item>
+          <nz-list-item><span>创建时间</span>{{data.created|dateString}}</nz-list-item>
+        </nz-list>
+
+
+  </nz-tab>
+  <nz-tab nzTitle="授权">
+    <ng-template nz-tab>
+      <app-license [product]="data.product_id" [term]="data.id"></app-license>
+    </ng-template>
+  </nz-tab>
+
+</nz-tabset>
+
+<ng-template #extraTemplate>
+  <a (click)="load()" title="刷新">
+    <i nz-icon nzType="reload" [nzSpin]="loading"></i>
+  </a>
+  <nz-divider nzType="vertical"></nz-divider>
+  <a title="编辑" [routerLink]="'/admin/term/edit/'+id">
+    <i nz-icon nzType="form"></i>
+  </a>
+</ng-template>

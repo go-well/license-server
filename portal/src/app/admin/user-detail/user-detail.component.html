@@ -1,0 +1,26 @@
+
+
+<nz-tabset [nzTabBarExtraContent]="extraTemplate">
+  <nz-tab nzTitle="用户详情">
+    <p>
+      名称：{{data.name}}
+      {{data.disabled ? '禁用' : '禁用'}}
+      <nz-switch [ngModel]="data.disabled" (ngModelChange)="onEnableChange($event)"></nz-switch>
+    </p>
+    <p>
+      手机：{{data.cellphone}}
+    </p>
+
+  </nz-tab>
+
+</nz-tabset>
+
+<ng-template #extraTemplate>
+  <a (click)="load()" title="刷新">
+    <i nz-icon nzType="reload" [nzSpin]="loading"></i>
+  </a>
+  <nz-divider nzType="vertical"></nz-divider>
+  <a title="编辑" [routerLink]="'/admin/user/edit/'+id">
+    <i nz-icon nzType="form"></i>
+  </a>
+</ng-template>

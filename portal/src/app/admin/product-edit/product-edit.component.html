@@ -1,0 +1,72 @@
+<app-editor [(ngModel)]="data" (ngModelChange)="basicForm.patchValue($event)" [submitting]="submitting"
+            (submit)="submit()">
+
+  <form [formGroup]="basicForm">
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">CODE</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <input nz-input formControlName="code" required/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">名称</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <input nz-input formControlName="name" required/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">公钥</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <input nz-input formControlName="publicKey"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">私钥</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <input nz-input formControlName="privateKey"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">SN</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-switch formControlName="sn"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">CPU</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-switch formControlName="cpu"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">MAC</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-switch formControlName="mac"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">UUID</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-switch formControlName="uuid"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">禁用</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="">
+        <nz-switch formControlName="disabled"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+  </form>
+
+
+</app-editor>
