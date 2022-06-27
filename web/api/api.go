@@ -56,7 +56,7 @@ func RegisterRoutes(app *gin.RouterGroup) {
 	modelUser := reflect.TypeOf(model.User{})
 	app.GET("/user/me", userMe)
 	app.POST("/user/list", curdApiList(modelUser))
-	app.POST("/user/create", parseParamId, curdApiCreate(modelUser, nil, nil))
+	app.POST("/user/create", curdApiCreate(modelUser, nil, nil))
 	app.GET("/user/:id", parseParamId, curdApiGet(modelUser))
 	app.POST("/user/:id", parseParamId, curdApiModify(modelUser, []string{"username", "nickname", "disabled"}, nil, nil))
 	app.GET("/user/:id/delete", parseParamId, curdApiDelete(modelUser, nil, nil))
@@ -68,18 +68,27 @@ func RegisterRoutes(app *gin.RouterGroup) {
 	modelProduct := reflect.TypeOf(model.Product{})
 	app.POST("/product/list", curdApiList(modelProduct))
 	app.POST("/product/create", curdApiCreate(modelProduct, productBeforeCreate, nil))
-	app.GET("/product/:id", curdApiGet(modelProduct))
+	app.GET("/product/:id", parseParamId, curdApiGet(modelProduct))
 	app.POST("/product/:id", parseParamId, curdApiModify(modelProduct,
-		[]string{"name", "UUID", "SN", "CPU", "MAC", "disabled"}, nil, nil))
+		[]string{"code", "name", "uuid", "sn", "cpu", "mac", "disabled"}, nil, nil))
 	app.GET("/product/:id/delete", parseParamId, curdApiDelete(modelProduct, nil, nil))
 	app.GET("/product/:id/enable", parseParamId, curdApiDisable(modelProduct, false, nil, nil))
 	app.GET("/product/:id/disable", parseParamId, curdApiDisable(modelProduct, true, nil, nil))
+
+	//周期接口
+	modelTerm := reflect.TypeOf(model.Term{})
+	app.POST("/term/list", curdApiList(modelTerm))
+	app.POST("/term/create", curdApiCreate(modelTerm, nil, nil))
+	app.GET("/term/:id", parseParamId, curdApiGet(modelTerm))
+	app.POST("/term/:id", parseParamId, curdApiModify(modelTerm,
+		[]string{"name", "description", "year", "month", "day", "price"}, nil, nil))
+	app.GET("/term/:id/delete", parseParamId, curdApiDelete(modelTerm, nil, nil))
 
 	//项目接口
 	modelLicense := reflect.TypeOf(model.License{})
 	app.POST("/license/list", curdApiList(modelLicense))
 	app.POST("/license/create", curdApiCreate(modelLicense, licenseBeforeCreate, nil))
-	app.GET("/license/:id", curdApiGet(modelLicense))
+	app.GET("/license/:id", parseParamId, curdApiGet(modelLicense))
 	app.POST("/license/:id", parseParamId, curdApiModify(modelLicense,
 		[]string{"user", "email", "cellphone", "organization"}, nil, nil))
 	app.GET("/license/:id/delete", parseParamId, curdApiDelete(modelLicense, nil, nil))

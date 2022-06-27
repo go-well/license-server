@@ -13,6 +13,6 @@ var DatabaseDefault = Database{
 	Type:     "sqlite",
 	URL:      "sqlite.db",
 	Debug:    false,
-	Sync:     false,
+	Sync:     true,
 	LogLevel: 4,
 }

@@ -8,7 +8,7 @@ type Web struct {
 }
 
 var WebDefault = Web{
-	Addr:     ":8080",
+	Addr:     ":8899",
 	Debug:    false,
 	Compress: true,
 }
