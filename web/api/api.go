@@ -64,16 +64,25 @@ func RegisterRoutes(app *gin.RouterGroup) {
 	app.GET("/user/:id/enable", parseParamId, curdApiDisable(modelUser, false, nil, nil))
 	app.GET("/user/:id/disable", parseParamId, curdApiDisable(modelUser, true, nil, nil))
 
-	//项目接口
+	//产品接口
 	modelProduct := reflect.TypeOf(model.Product{})
 	app.POST("/product/list", curdApiList(modelProduct))
-	app.POST("/product/create", curdApiCreate(modelProduct, nil, nil))
+	app.POST("/product/create", curdApiCreate(modelProduct, productBeforeCreate, nil))
 	app.GET("/product/:id", curdApiGet(modelProduct))
 	app.POST("/product/:id", parseParamId, curdApiModify(modelProduct,
 		[]string{"name", "UUID", "SN", "CPU", "MAC", "disabled"}, nil, nil))
 	app.GET("/product/:id/delete", parseParamId, curdApiDelete(modelProduct, nil, nil))
 	app.GET("/product/:id/enable", parseParamId, curdApiDisable(modelProduct, false, nil, nil))
 	app.GET("/product/:id/disable", parseParamId, curdApiDisable(modelProduct, true, nil, nil))
+
+	//项目接口
+	modelLicense := reflect.TypeOf(model.License{})
+	app.POST("/license/list", curdApiList(modelLicense))
+	app.POST("/license/create", curdApiCreate(modelLicense, licenseBeforeCreate, nil))
+	app.GET("/license/:id", curdApiGet(modelLicense))
+	app.POST("/license/:id", parseParamId, curdApiModify(modelLicense,
+		[]string{"user", "email", "cellphone", "organization"}, nil, nil))
+	app.GET("/license/:id/delete", parseParamId, curdApiDelete(modelLicense, nil, nil))
 
 	//TODO 报接口错误（以下代码不生效，路由好像不是树形处理）
 	app.Use(func(ctx *gin.Context) {
